@@ -14,7 +14,7 @@ class ProductoController {
 
     crear = (req, res) => {
         //Obtener datos del cuerpo de la petición
-        let { codigo, nombre_producto, descripcion, tipo, sabor, marca, presentacion, contenido_neto, valor, url_img } = req.body;
+        let { cod, name, description, kind, flavor, brand, presentation, cont, price} = req.body;
         //Obtener token
         let token = this.tokenC.getToken(req);
         //Decodificar token para obtener el id del usuario
@@ -22,7 +22,7 @@ class ProductoController {
         //Obtener el id del usuario a partir del token
         let user_id = decode.id;
         //Crear producto en la DB
-        Producto.create({ codigo, nombre_producto, descripcion, tipo, sabor, marca, presentacion, contenido_neto, valor, url_img, user_id: decode.id }, (error, doc) => {
+        Producto.create({ cod, name, description, kind, flavor, brand, presentation, cont, price, user_id}, (error, doc) => {
             if (error) {
                 res.status(500).json({ error });
             } else {
@@ -60,7 +60,7 @@ class ProductoController {
 
     modificar = (req,res) =>{
         //Obtener datos del producto
-        let { id, codigo, nombre_producto, descripcion, tipo, sabor, marca, presentacion, contenido_neto, valor, url_img} = req.body;
+        let { id, cod, name, description, kind, flavor, brand, presentation, cont, price} = req.body;
         //Obtener token
         let token = this.tokenC.getToken(req);
         //Decodificar token para obtener el id del usuario
@@ -74,7 +74,7 @@ class ProductoController {
          * Tercer parámetro ( (error, doc)=>{} ): callback, función a ejecutarse cuando se envia la petición
          * *****/
 
-        Producto.findOneAndUpdate({_id: id, user_id},{codigo, nombre_producto, descripcion, tipo, sabor, marca, presentacion, contenido_neto, valor, url_img},(error, doc) =>{
+        Producto.findOneAndUpdate({_id: id, user_id},{cod, name, description, kind, flavor, brand, presentation, cont, price },(error, doc) =>{
             if(error){
                 res.status(500).json(error);
             }else{

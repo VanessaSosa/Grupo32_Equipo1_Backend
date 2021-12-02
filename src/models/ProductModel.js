@@ -2,17 +2,38 @@
 const {Schema, model} = require('mongoose')
 
 const ProductSchema = new Schema({
-    codigo: Number,
-    nombre_producto: String,
-    descripcion: String,
-    tipo : String,
-    sabor: String,
-    marca: String,
-    presentacion: String,
-    contenido_neto: Number,
-    valor: Number,
-    url_img: String,
-    user_id: String
+    cod: {
+        type: Number
+    },
+    name: {
+        type: String
+    },
+    description: {
+
+        type: String
+    },
+    kind : {
+        type: String
+    },
+    flavor:{
+        type: String
+    },
+    brand: {
+        type: String
+    },
+    presentation: {
+        type: String
+    },
+    cont: {
+        type: Number
+    },
+    price: {
+        type: Number
+    },
+    user_id:{
+        type: String
+    }
+    //img: String
 },{
     collection: 'productos'
 })

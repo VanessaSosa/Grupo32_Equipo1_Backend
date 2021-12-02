@@ -6,7 +6,7 @@ class UserController{
 
     registrar(req,res){
         let objUser = req.body;
-        if(objUser.nombre && objUser.apellido && objUser.contraseña && objUser.correo){
+        if(objUser.name && objUser.lastname && objUser.email && objUser.password ){
            User.create(objUser, (error, doc)=>{
             if(error){
                 res.status(500).json({mensaje: "Error de inserción"});
@@ -23,8 +23,8 @@ class UserController{
     }
 
     login(req,res){
-        let {correo, contraseña} = req.body;
-        User.find({correo, contraseña},(error,docs)=>{
+        let {email, password} = req.body;
+        User.find({email, password},(error,docs)=>{
             if(error){
                 console.log(error);
                 res.status(500).send();

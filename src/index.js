@@ -2,13 +2,14 @@
 require('dotenv').config();
 const express = require('express')
 const morgan = require('morgan')
+const cors = require('cors')
 
 //Importar módulos
 const ConnDb = require('./database/connDb');
 const ProductoRoutes = require('./routes/ProductoRoutes');
 const UserRouter = require('./routes/UserRouter');
 
-//const cors = require('cors')
+//
 //const bodyparser = require('body-parser')
 
 //Voy a configurar el puerto
@@ -27,6 +28,8 @@ class Server{
         this.app.use(express.json());
         //Indicar el uso de morgan para el monitoreo de las peticiones http
         this.app.use(morgan());
+        //Permitir conexiones de origen cruzado
+        this.app.use(cors({}));
         //configurar/almacenar el puerto por el que correrá el servidor
         this.app.set('PORT', process.env.PORT || 4000);
         //-----------Crear rutas------------------/endpoint (api) raíz
