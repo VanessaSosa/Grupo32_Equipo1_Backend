@@ -28,4 +28,4 @@ class ProductoRoutes{
 }
 
 
-module.exports = ProductoRoutes
+module.exports = ProductoRoutes;

@@ -1,7 +1,6 @@
 
 const Producto = require('../models/ProductModel')
 const TokenController = require('./TokenController');
-
 const jwt = require('jsonwebtoken')
 
 class ProductoController {
@@ -72,15 +71,14 @@ class ProductoController {
          * Primer parámetro ( {_id: id, user_id} ): objeto con las opciones de búsqueda en la BD
          * Segundo parámetro: ( {name, price} ): Campos/valores a actualizar en el documento
          * Tercer parámetro ( (error, doc)=>{} ): callback, función a ejecutarse cuando se envia la petición
-         * *****/
-
-        Producto.findOneAndUpdate({_id: id, user_id},{cod, name, description, kind, flavor, brand, presentation, cont, price },(error, doc) =>{
+        * *****/
+        Producto.findOneAndUpdate({_id: id, user_id}, {cod, name, description, kind, flavor, brand, presentation, cont, price },(error, doc) =>{
             if(error){
                 res.status(500).json(error);
             }else{
                 res.status(200).json({mensaje: "Producto actualizado"});
             }
-        })
+        });
     }
 
     eliminar = (req, res) => {
